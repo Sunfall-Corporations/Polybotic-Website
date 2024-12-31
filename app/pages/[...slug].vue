@@ -62,6 +62,7 @@ watch(() => route.path, (newPath) => {
     router.push('https://discord.gg/AbMuFaCJ7F')
   }
 })
+
 </script>
 
 <template>
