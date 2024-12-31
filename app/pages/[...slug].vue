@@ -1,7 +1,11 @@
 <script setup lang="ts">
 import { Toaster } from 'vue-sonner'
+import { useRoute, useRouter } from '#app'
+import { useClipboard } from '@vueuse/core'
 
 const route = useRoute()
+const router = useRouter()
+
 const { data: page } = await useAsyncData(`${route.path}`, () => queryContent(route.path).findOne())
 
 if (!page.value) {
@@ -50,15 +54,14 @@ defineShortcuts({
   },
 })
 
-import { useRouter, useRoute } from '#app'
-const router = useRouter()
-
-if (route.path === '/bot') {
-  router.push('https://discord.com/oauth2/authorize?client_id=1309244360789069948')
-} else if (route.path === '/invite') {
-  router.push('https://discord.gg/AbMuFaCJ7F')
-}
-
+// Route logic - Simplified to use watch
+watch(() => route.path, (newPath) => {
+  if (newPath === '/bot') {
+    router.push('https://discord.com/oauth2/authorize?client_id=1309244360789069948')
+  } else if (newPath === '/invite') {
+    router.push('https://discord.gg/AbMuFaCJ7F')
+  }
+})
 </script>
 
 <template>
