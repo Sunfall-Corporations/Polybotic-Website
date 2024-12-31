@@ -14,22 +14,28 @@ export default defineEventHandler(async (event) => {
       changefreq: 'daily',
     })
   }
-  // Add static pages
-  const staticPages = [
-    { url: '/', changefreq: 'daily' },
-    { url: '/about', changefreq: 'daily' },
-    { url: '/contact', changefreq: 'daily' },
-    { url: '/works', changefreq: 'daily' },
-    { url: '/writing', changefreq: 'daily' },
-    // Redirects
-    { url: '/bot', changefreq: 'daily' },
-    { url: '/invite', changefreq: 'daily' },
-  ]
-
-  for (const page of staticPages) {
-    sitemap.write(page)
-  }
-
+  // add other pages like /about, /contact etc
+  sitemap.write({
+    url: '/',
+    changefreq: 'daily',
+  })
+  sitemap.write({
+    url: '/about',
+    changefreq: 'daily',
+  })
+  sitemap.write({
+    url: '/contact',
+    changefreq: 'daily',
+  })
+  sitemap.write({
+    url: '/works',
+    changefreq: 'daily',
+  })
+  sitemap.write({
+    url: '/writing',
+    changefreq: 'daily',
+  })
   sitemap.end()
+
   return streamToPromise(sitemap)
 })
