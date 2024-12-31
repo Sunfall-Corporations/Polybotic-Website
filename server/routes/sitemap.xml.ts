@@ -35,6 +35,14 @@ export default defineEventHandler(async (event) => {
     url: '/writing',
     changefreq: 'daily',
   })
+  sitemap.write({
+    url: '/bot',
+    changefreq: 'daily',
+  })
+  sitemap.write({
+    url: '/invite',
+    changefreq: 'daily',
+  })
   sitemap.end()
 
   return streamToPromise(sitemap)

@@ -49,6 +49,16 @@ defineShortcuts({
     },
   },
 })
+
+import { useRouter, useRoute } from '#app'
+const router = useRouter()
+
+if (route.path === '/bot') {
+  router.push('https://discord.com/oauth2/authorize?client_id=1309244360789069948')
+} else if (route.path === '/invite') {
+  router.push('https://discord.gg/AbMuFaCJ7F')
+}
+
 </script>
 
 <template>
